@@ -1,164 +1,121 @@
-import React, { useState } from 'react';
-import {
- View,
- Text,
- TextInput,
- StyleSheet,
- ImageBackground,
- TouchableOpacity,
- ScrollView,
+import React from 'react';
+import { 
+  StyleSheet, 
+  View, 
+  ImageBackground, 
+  TextInput, 
+  TouchableOpacity, 
+  Text, 
+  KeyboardAvoidingView, 
+  Platform 
 } from 'react-native';
 
 export default function Carossel() {
+  // Imagem de avião da internet para não precisar da pasta assets agora
+  const airplaneImage = { uri: 'https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?q=80&w=2069&auto=format&fit=crop' };
 
- const [nome, setNome] = useState('');
- const [telefone, setTelefone] = useState('');
- const [cpf, setCpf] = useState('');
- const [dataViagem, setDataViagem] = useState('');
-
- const enviar = () => {
-   console.log({
-     nome,
-     telefone,
-     cpf,
-     dataViagem
-   });
- };
-
- return (
-
-  <ImageBackground
-   source={{
-    uri:'https://images.unsplash.com/photo-1436491865332-7a61a109cc05'
-   }}
-   style={styles.background}
-  >
-
-   <View style={styles.overlay}>
-
-    <ScrollView
-     contentContainerStyle={styles.container}
+  return (
+    <ImageBackground 
+      source={airplaneImage} 
+      style={styles.backgroundImage}
+      resizeMode="cover"
     >
-
-     <Text style={styles.titulo}>
-      Viaje Pelo Mundo ✈️
-     </Text>
-
-     <Text style={styles.subtitulo}>
-      Planeje sua próxima aventura
-     </Text>
-
-     <View style={styles.formulario}>
-
-      <TextInput
-       placeholder="Nome"
-       style={styles.input}
-       value={nome}
-       onChangeText={setNome}
-      />
-
-      <TextInput
-       placeholder="Telefone"
-       style={styles.input}
-       keyboardType="phone-pad"
-       value={telefone}
-       onChangeText={setTelefone}
-      />
-
-      <TextInput
-       placeholder="CPF"
-       style={styles.input}
-       keyboardType="numeric"
-       value={cpf}
-       onChangeText={setCpf}
-      />
-
-      <TextInput
-       placeholder="Data da viagem"
-       style={styles.input}
-       value={dataViagem}
-       onChangeText={setDataViagem}
-      />
-
-      <TouchableOpacity
-       style={styles.botao}
-       onPress={enviar}
+      <KeyboardAvoidingView 
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.overlay}
       >
+        <View style={styles.loginBox}>
+          <Text style={styles.title}>VIAGENS</Text>
+          <Text style={styles.subtitle}>Prepare-se para decolar!</Text>
+          
+          <TextInput 
+            placeholder="Seu E-mail" 
+            style={styles.input} 
+            placeholderTextColor="#888"
+          />
+          
+          <TextInput 
+            placeholder="Sua Senha" 
+            style={styles.input} 
+            secureTextEntry 
+            placeholderTextColor="#888"
+          />
+          
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>ENTRAR</Text>
+          </TouchableOpacity>
 
-       <Text style={styles.textoBotao}>
-        Fazer Login
-       </Text>
-
-      </TouchableOpacity>
-
-     </View>
-
-    </ScrollView>
-
-   </View>
-
-  </ImageBackground>
-
- );
+          <TouchableOpacity style={styles.forgotPass}>
+            <Text style={styles.forgotText}>Ainda não tem conta? Cadastre-se</Text>
+          </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
+    </ImageBackground>
+  );
 }
 
 const styles = StyleSheet.create({
-
- background:{
-  flex:1
- },
-
- overlay:{
-  flex:1,
-  backgroundColor:'rgba(0,0,0,0.45)'
- },
-
- container:{
-  flexGrow:1,
-  justifyContent:'center',
-  padding:25
- },
-
- titulo:{
-  color:'#FFF',
-  fontSize:34,
-  fontWeight:'bold',
-  textAlign:'center'
- },
-
- subtitulo:{
-  color:'#FFF',
-  textAlign:'center',
-  marginTop:10,
-  marginBottom:30,
-  fontSize:16
- },
-
- formulario:{
-  backgroundColor:'#FFF',
-  borderRadius:20,
-  padding:20
- },
-
- input:{
-  borderWidth:1,
-  borderColor:'#DDD',
-  borderRadius:10,
-  padding:14,
-  marginBottom:15
- },
-
- botao:{
-  backgroundColor:'#0A84FF',
-  padding:15,
-  borderRadius:10
- },
-
- textoBotao:{
-  color:'#FFF',
-  fontWeight:'bold',
-  textAlign:'center',
-  fontSize:16
- }
-
+  backgroundImage: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+  },
+  overlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.3)', // Escurece levemente a foto de fundo
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  // Substitua o bloco shadow pelo boxShadow (padrão web moderno)
+  loginBox: {
+    width: '85%',
+    padding: 25,
+    backgroundColor: 'rgba(255, 255, 255, 0.92)',
+    borderRadius: 25,
+    alignItems: 'center',
+    boxShadow: "0px 4px 5px rgba(0,0,0,0.3)", // Nova forma de fazer sombra
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#003366', // Azul marinho
+    letterSpacing: 2,
+  },
+  subtitle: {
+    fontSize: 14,
+    color: '#666',
+    marginBottom: 25,
+  },
+  input: {
+    width: '100%',
+    height: 55,
+    backgroundColor: '#fff',
+    borderRadius: 12,
+    paddingHorizontal: 15,
+    marginBottom: 15,
+    borderWidth: 1,
+    borderColor: '#eee',
+  },
+  button: {
+    width: '100%',
+    height: 55,
+    backgroundColor: '#0055aa',
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+    letterSpacing: 1,
+  },
+  forgotPass: {
+    marginTop: 20,
+  },
+  forgotText: {
+    color: '#0055aa',
+    fontSize: 13,
+  }
 });
