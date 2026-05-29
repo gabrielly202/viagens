@@ -2,22 +2,22 @@ import React from 'react';
 import { StyleSheet, View, Text, TextInput, FlatList, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 
 const lugares = [
-  { id: '1', nome: 'Paris', pais: 'França', img: 'https://images.unsplash.com/photo-1502602898657-3491765c313d?q=80&w=500' },
+  { id: '1', nome: 'paris', pais: 'França', img: 'https://passagenspromo.com.br/blog/wp-content/uploads/2019/04/viagem-para-paris-740x415.jpg' },
   { id: '2', nome: 'Tóquio', pais: 'Japão', img: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=500' },
-  { id: '3', nome: 'Rio de Janeiro', pais: 'Brasil', img: 'https://images.unsplash.com/photo-1483729558449-99ef09a8c371?q=80&w=500' },
-  { id: '4', nome: 'Salvador', pais: 'Brasil', img: 'https://images.unsplash.com/photo-1590059530514-93b593099955?q=80&w=500' },
-  { id: '5', nome: 'Florianópolis', pais: 'Brasil', img: 'https://images.unsplash.com/photo-1549117621-c42387132159?q=80&w=500' },
-  { id: '6', nome: 'Gramado', pais: 'Brasil', img: 'https://images.unsplash.com/photo-1596706935821-396564619379?q=80&w=500' },
+  { id: '3', nome: 'Rio de Janeiro', pais: 'Brasil', img: 'https://www.todadisciplina.com.br/wp-content/uploads/2025/08/cristo-redentor-.jpg' },
+  { id: '4', nome: 'Salvador', pais: 'Brasil', img: 'https://institucional.seazone.com.br/wp-content/uploads/2024/11/salvador-brasilturis.webp' },
+  { id: '5', nome: 'Florianópolis', pais: 'Brasil', img: 'https://cdn.myside.com.br/base/ea5/0fb/37f/beira-mar-florianopolis.jpg' },
+  { id: '6', nome: 'Gramado', pais: 'Brasil', img: 'https://www.melhoresdestinos.com.br/wp-content/uploads/2019/02/passagens-aereas-gramado-capa2019-04-820x430.jpg' },
 ];
 
 export default function Explore() {
   return (
     <SafeAreaView style={styles.container}>
       {/* Título e Pesquisa */}
-      <Text style={styles.headerTitle}>Viagens</Text>
+      <Text style={styles.headerTitle}>.</Text>
       <TextInput style={styles.searchBar} placeholder="🔍 Pesquisar destinos..." placeholderTextColor="#999" />
       
-      <Text style={styles.sectionTitle}>Recomendações</Text>
+      <Text style={styles.sectionTitle}>Pontos Turisticos</Text>
 
       <FlatList 
         data={lugares}
@@ -40,7 +40,7 @@ export default function Explore() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f8f9fa', paddingHorizontal: 15 },
+  container: { flex: 1, backgroundColor: '#D2B48C', paddingHorizontal: 15 },
   headerTitle: { fontSize: 28, fontWeight: 'bold', color: '#003366', marginTop: 10 },
   searchBar: {
     height: 50, backgroundColor: '#fff', borderRadius: 25, paddingHorizontal: 20, 
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   sectionTitle: { fontSize: 18, fontWeight: '600', marginBottom: 10, color: '#333' },
   list: { paddingBottom: 20 },
   card: {
-    flex: 1, backgroundColor: '#fff', margin: 6, borderRadius: 20, padding: 10,
+    flex: 1, backgroundColor: '#fff', margin: 4, borderRadius: 10, padding: 10,
     alignItems: 'center', elevation: 3, shadowColor: '#000', shadowOpacity: 0.1, shadowRadius: 5
   },
   image: { width: '100%', height: 100, borderRadius: 15, marginBottom: 8 },

@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   glow: {
-    width: 201,
+    width: 200,
     height: 201,
     position: 'absolute',
   },
