@@ -1,60 +1,148 @@
 import React from 'react';
-import { StyleSheet, View, Text, TextInput, FlatList, Image, TouchableOpacity, SafeAreaView } from 'react-native';
+import { 
+  View, 
+  Text, 
+  StyleSheet, 
+  FlatList, 
+  Image, 
+  TextInput, 
+  TouchableOpacity, 
+  SafeAreaView 
+} from 'react-native';
 
-const lugares = [
-  { id: '1', nome: 'paris', pais: 'França', img: 'https://passagenspromo.com.br/blog/wp-content/uploads/2019/04/viagem-para-paris-740x415.jpg' },
-  { id: '2', nome: 'Tóquio', pais: 'Japão', img: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=500' },
-  { id: '3', nome: 'Rio de Janeiro', pais: 'Brasil', img: 'https://www.todadisciplina.com.br/wp-content/uploads/2025/08/cristo-redentor-.jpg' },
-  { id: '4', nome: 'Salvador', pais: 'Brasil', img: 'https://institucional.seazone.com.br/wp-content/uploads/2024/11/salvador-brasilturis.webp' },
-  { id: '5', nome: 'Florianópolis', pais: 'Brasil', img: 'https://cdn.myside.com.br/base/ea5/0fb/37f/beira-mar-florianopolis.jpg' },
-  { id: '6', nome: 'Gramado', pais: 'Brasil', img: 'https://www.melhoresdestinos.com.br/wp-content/uploads/2019/02/passagens-aereas-gramado-capa2019-04-820x430.jpg' },
+// Dados de exemplo (substitua pelas suas URLs reais)
+const destinos = [
+  { id: '1', cidade: 'Paris', pais: 'França', imagem: 'https://img.magnific.com/fotos-premium/vista-de-paris-em-franca_110893-1675.jpg?semt=ais_hybrid&w=740&q=80' },
+  { id: '2', cidade: 'Tóquio', pais: 'Japão', imagem: 'https://media.istockphoto.com/id/598919748/pt/foto/view-of-tokyo-skyline-at-sunset.jpg?s=612x612&w=0&k=20&c=gYChrry1kx3DXV03gAAyk9lQyqo357YPBEXlEqiMUYg=' },
+  { id: '3', cidade: 'Rio de Janeiro', pais: 'Brasil', imagem: 'https://t3.ftcdn.net/jpg/05/07/09/94/360_F_507099488_q1Kj3G82kQRJCHmfFQRBwxeTv503RiCX.jpg' },
+  { id: '4', cidade: 'Salvador', pais: 'Brasil', imagem: 'https://media.istockphoto.com/id/1244352030/pt/foto/lighthouse-in-salvador-bahia.jpg?s=612x612&w=0&k=20&c=k989i_2W5mSsS7bFkg8HF9mKDQvgtMyUw-0FtXgo3Zo=' },
 ];
 
-export default function Explore() {
+export default function TelaTurismo() {
+  const renderCard = ({ item }) => (
+    <View style={styles.card}>
+      <Image source={{ uri: item.imagem }} style={styles.imagemCard} />
+      <View style={styles.infoContainer}>
+        <Text style={styles.tituloCard}>{item.cidade}</Text>
+        <Text style={styles.subtituloCard}>{item.pais}</Text>
+        
+        <TouchableOpacity style={styles.botao}>
+          <Text style={styles.textoBotao}>Saiba mais</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+
   return (
     <SafeAreaView style={styles.container}>
-      {/* Título e Pesquisa */}
-      <Text style={styles.headerTitle}>.</Text>
-      <TextInput style={styles.searchBar} placeholder="🔍 Pesquisar destinos..." placeholderTextColor="#999" />
-      
-      <Text style={styles.sectionTitle}>Pontos Turisticos</Text>
+      {/* Barra de Pesquisa */}
+      <View style={styles.header}>
+        <TextInput 
+          style={styles.inputPesquisa} 
+          placeholder="🔍 " 
+          placeholderTextColor="#888"
+        />
+      </View>
 
-      <FlatList 
-        data={lugares}
+      {/* Título da Seção */}
+      <Text style={styles.tituloSecao}>Pontos Turísticos</Text>
+
+      {/* Grid de Destinos */}
+      <FlatList
+        data={destinos}
         keyExtractor={(item) => item.id}
-        numColumns={2}
-        contentContainerStyle={styles.list}
-        renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Image source={{ uri: item.img }} style={styles.image} />
-            <Text style={styles.nome}>{item.nome}</Text>
-            <Text style={styles.pais}>{item.pais}</Text>
-            <TouchableOpacity style={styles.btnSaibaMais}>
-              <Text style={styles.btnText}>Saiba mais</Text>
-            </TouchableOpacity>
-          </View>
-        )}
+        renderItem={renderCard}
+        numColumns={2} // Mantém as caixas menores e lado a lado
+        columnWrapperStyle={styles.linhaGrid}
+        contentContainerStyle={styles.listaContainer}
+        showsVerticalScrollIndicator={false}
       />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#D2B48C', paddingHorizontal: 15 },
-  headerTitle: { fontSize: 28, fontWeight: 'bold', color: '#003366', marginTop: 10 },
-  searchBar: {
-    height: 50, backgroundColor: '#fff', borderRadius: 25, paddingHorizontal: 20, 
-    marginVertical: 15, borderWidth: 1, borderColor: '#eee', elevation: 2
+  container: {
+    flex: 1,
+    backgroundColor: '#464847', // Fundo mais moderno e claro
   },
-  sectionTitle: { fontSize: 18, fontWeight: '600', marginBottom: 10, color: '#333' },
-  list: { paddingBottom: 20 },
+  header: {
+    padding: 20,
+    paddingTop: 40, // Ajuste para status bar se necessário
+    backgroundColor: '#FFFFFF',
+    borderBottomWidth: 1,
+    borderBottomColor: '#EAEAEC',
+  },
+  inputPesquisa: {
+    backgroundColor: '#F0F2F5',
+    borderRadius: 25, // Formato pílula
+    paddingHorizontal: 20,
+    height: 60,
+    fontSize: 16,
+    color: '#333',
+  },
+  tituloSecao: {
+    fontSize: 22,
+    fontWeight: 'Helvetica',
+    color: '#fff',
+    marginHorizontal: 20,
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  listaContainer: {
+    paddingHorizontal: 10,
+    paddingBottom: 20,
+  },
+  linhaGrid: {
+    justifyContent: 'space-between',
+    paddingHorizontal: 10,
+  },
   card: {
-    flex: 1, backgroundColor: '#fff', margin: 4, borderRadius: 10, padding: 10,
-    alignItems: 'center', elevation: 3, shadowColor: '#000', shadowOpacity: 0.1, shadowRadius: 5
+    backgroundColor: '#FFFFFF',
+    flex: 1,
+    margin: 8,
+    borderRadius: 16, // Bordas mais arredondadas
+    overflow: 'hidden',
+    // Sombras para iOS e Android
+    shadowColor: '#000',
+    shadowOffset: { width:100, height: 40 },
+    shadowOpacity: 0.1,
+    shadowRadius: 6,
+    elevation: 4, 
   },
-  image: { width: '100%', height: 100, borderRadius: 15, marginBottom: 8 },
-  nome: { fontWeight: 'bold', fontSize: 14 },
-  pais: { fontSize: 12, color: '#666', marginBottom: 10 },
-  btnSaibaMais: { backgroundColor: '#0055aa', paddingVertical: 6, paddingHorizontal: 15, borderRadius: 10 },
-  btnText: { color: '#fff', fontSize: 12, fontWeight: 'bold' }
+  imagemCard: {
+    width: '100%',
+    height: 250, // Altura reduzida para deixar a caixa menor
+    resizeMode: 'cover',
+  },
+  infoContainer: {
+    padding: 15,
+    alignItems: 'center',
+  },
+  tituloCard: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#333',
+    textAlign: 'center',
+  },
+  subtituloCard: {
+    fontSize: 12,
+    color: '#7F8C8D',
+    marginBottom: 15,
+    marginTop: 2,
+    textAlign: 'center',
+  },
+  botao: {
+    backgroundColor: '#0056D2', // Azul mais vivo e moderno
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+    width: '100%',
+    alignItems: 'center',
+  },
+  textoBotao: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    fontWeight: '600',
+  },
 });

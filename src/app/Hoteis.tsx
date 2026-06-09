@@ -117,34 +117,39 @@ export default function Hoteis() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F7FA',
+    backgroundColor: '#4B4E53',
   },
   pageTitle: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#1A1A1A',
+    color: '#fff',
     marginHorizontal: 20,
     marginTop: 20,
     marginBottom: 10,
   },
   listContainer: {
     padding: 20,
-    paddingBottom: 40,
+    paddingBottom: 90,
   },
   card: {
     backgroundColor: '#FFFFFF',
     borderRadius: 16,
     marginBottom: 24,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: { width: 0, height: 6 }, // Mudei de 60 para 6 para a sombra não bugar
     shadowOpacity: 0.1,
     shadowRadius: 8,
     elevation: 5, 
     overflow: 'hidden',
+    // Adicionei essas 3 linhas para o cartão não ficar gigante no computador:
+    maxWidth: 900, 
+    alignSelf: 'center',
+    width: '100%',
   },
   image: {
     width: '100%',
-    height: 200,
+    // Aqui é onde muda o tamanho da imagem! Tirei o height: 200 e coloquei aspectRatio
+    aspectRatio: 16 / 9, 
     backgroundColor: '#E0E0E0',
   },
   cardInfo: {
@@ -158,8 +163,8 @@ const styles = StyleSheet.create({
   },
   hotelName: {
     fontSize: 20,
-    fontWeight: 'bold', // Trocado '700' por 'bold' para evitar avisos em algumas versoes
-    color: '#333',
+    fontWeight: 'bold', 
+    color: '#4B4E53',
     flex: 1,
   },
   starsContainer: {
@@ -169,14 +174,14 @@ const styles = StyleSheet.create({
   },
   starIconText: {
     fontSize: 18,
-    color: '#FFD700', // Dourado
+    color: '#FFD700', 
     letterSpacing: 2,
   },
   ratingText: {
     fontSize: 14,
     color: '#666',
     marginLeft: 6,
-    fontWeight: 'bold', // Trocado '500' por 'bold'
+    fontWeight: 'bold', 
   },
   locationRow: {
     flexDirection: 'row',

@@ -33,10 +33,12 @@ export default function AppTabs() {
             <TabButton>Hoteis</TabButton>
           </TabTrigger>
 
-         
           <TabTrigger name="carrinho" href="/carrinho" asChild>
-            <TabButton>carrinho</TabButton>
-          </TabTrigger>
+  <TabButton>
+     {/* Aqui você pode colocar um ícone se quiser */}
+     <Text>Carrinho</Text> 
+  </TabButton>
+</TabTrigger>
 
         </CustomTabList>
       </TabList>
