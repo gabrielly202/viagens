@@ -123,8 +123,6 @@ export default function Hoteis() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.pageTitle}>Destinos Incríveis</Text>
-
       {/* Barra de pesquisa */}
       <View style={styles.searchWrapper}>
         <Text style={styles.searchIcon}>🔍</Text>
@@ -168,19 +166,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#4B4E53',
   },
-  pageTitle: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#fff',
-    marginHorizontal: 20,
-    marginTop: 20,
-    marginBottom: 14,
-  },
   searchWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#fff',
     marginHorizontal: 20,
+    marginTop: 20,
     marginBottom: 8,
     borderRadius: 12,
     paddingHorizontal: 12,
