@@ -8,7 +8,7 @@ export default function TabLayout() {
         tabBarPosition: 'top', // Move as abas para cima
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: '#ffffff',
+          backgroundColor: '#D3D3D3',
           height: 60,
           paddingTop: Platform.OS === 'ios' ? 40 : 0, // Ajuste para o entalhe do iPhone
         },
@@ -26,10 +26,10 @@ export default function TabLayout() {
       <Tabs.Screen name="explore" options={{ title: 'Lugares' }} />
 
       {/* 3. Hotéis */}
-     {/* 4. Carrinho (Sempre por último) */} <Tabs.Screen name="carrinho" options={{ title: 'Carrinho' }} />
+     {/* 4. Carrinho (Sempre por último) */} <Tabs.Screen name="hotéis " options={{ title: 'hotéis' }} />
 
       {/* 4. Carrinho (Sempre por último) */}
-      <Tabs.Screen name="hoteis" options={{ title: 'hoteis' }} />
+      <Tabs.Screen name="carrinho" options={{ title: 'carrinho' }} />
     </Tabs>
   );
 }

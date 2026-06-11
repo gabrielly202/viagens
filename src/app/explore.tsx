@@ -27,7 +27,7 @@ export default function TelaTurismo() {
         <Text style={styles.subtituloCard}>{item.pais}</Text>
         
         <TouchableOpacity style={styles.botao}>
-          <Text style={styles.textoBotao}>Saiba mais</Text>
+          <Text style={styles.textoBotao}>Adicionar no carrinho</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -40,12 +40,12 @@ export default function TelaTurismo() {
         <TextInput 
           style={styles.inputPesquisa} 
           placeholder="🔍 " 
-          placeholderTextColor="#888"
+          placeholderTextColor="#4B4E53"
         />
       </View>
 
       {/* Título da Seção */}
-      <Text style={styles.tituloSecao}>Pontos Turísticos</Text>
+      <Text style={styles.tituloSecao}></Text>
 
       {/* Grid de Destinos */}
       <FlatList
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   header: {
     padding: 20,
     paddingTop: 40, // Ajuste para status bar se necessário
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#4B4E53',
     borderBottomWidth: 1,
     borderBottomColor: '#EAEAEC',
   },

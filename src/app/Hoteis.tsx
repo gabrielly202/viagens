@@ -61,6 +61,7 @@ const HOTEIS_DATA = [
   },
 ];
 
+
 type Hotel = (typeof HOTEIS_DATA)[0];
 
 export default function Hoteis() {
@@ -75,6 +76,7 @@ export default function Hoteis() {
         h.local.toLowerCase().includes(termo)
     );
   }, [busca]);
+  
 
   const renderStars = (rating: number) => {
     let stars = '';

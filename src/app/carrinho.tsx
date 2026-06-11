@@ -28,7 +28,7 @@ export default function CarrinhoViagem() {
         {/* Card do Destino Selecionado */}
         <View style={styles.cardDestino}>
           <Image 
-            source={{ uri: 'https://images.unsplash.com/photo-1502602898657-3491765c313d?q=80&w=500' }} 
+            source={{ uri: 'https://www.embracon.com.br/_next/image?url=https%3A%2F%2Fembra-assets.nyc3.digitaloceanspaces.com%2Fpublic%2Fblog%2Fos-lugares-de-paris-que-voce-nao-pode-deixar-de-conhecer.jpg&w=3840&q=75' }} 
             style={styles.imgDestino} 
           />
           <View style={styles.infoDestino}>
@@ -98,12 +98,12 @@ export default function CarrinhoViagem() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#e3f2fd' },
+  container: { flex: 1, backgroundColor: '#4B4E53' },
   scrollContent: { padding: 20 },
   
   header: { marginBottom: 25, marginTop: 10 },
-  title: { fontSize: 26, fontWeight: 'bold', color: '#003366' },
-  subtitle: { fontSize: 14, color: '#666' },
+  title: { fontSize: 26, fontWeight: 'bold', color: '#fff' },
+  subtitle: { fontSize: 14, color: '#fff' },
 
   cardDestino: { 
     backgroundColor: '#fff', 
@@ -160,5 +160,5 @@ const styles = StyleSheet.create({
   btnFinalizarTexto: { color: '#fff', fontWeight: 'bold', fontSize: 16 },
   
   btnVoltar: { marginTop: 15, alignItems: 'center', padding: 10 },
-  btnVoltarTexto: { color: '#0055aa', fontWeight: '500' }
+  btnVoltarTexto: { color: '#fff', fontWeight: '500' }
 });
