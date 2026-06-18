@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   TextInput,
   TouchableOpacity,
+  Platform
 } from 'react-native';
 
 const HOTEIS_DATA = [
@@ -61,7 +62,6 @@ const HOTEIS_DATA = [
   },
 ];
 
-
 type Hotel = (typeof HOTEIS_DATA)[0];
 
 export default function Hoteis() {
@@ -76,7 +76,6 @@ export default function Hoteis() {
         h.local.toLowerCase().includes(termo)
     );
   }, [busca]);
-  
 
   const renderStars = (rating: number) => {
     let stars = '';
@@ -86,7 +85,7 @@ export default function Hoteis() {
     return (
       <View style={styles.starsContainer}>
         <Text style={styles.starIconText}>{stars}</Text>
-        <Text style={styles.ratingText}>({rating}.0)</Text>
+        <Text style={styles.ratingText}>{`(${rating}.0)`}</Text>
       </View>
     );
   };
@@ -125,6 +124,13 @@ export default function Hoteis() {
 
   return (
     <SafeAreaView style={styles.container}>
+      
+      {/* CABEÇALHO UNIFICADO AZUL */}
+      <View style={styles.headerTop}>
+        <Text style={styles.headerTopText}>viaje mais ✈️</Text>
+      </View>
+      {/* A BARRA DE MENU BRANCA FOI REMOVIDA DAQUI */}
+
       {/* Barra de pesquisa */}
       <View style={styles.searchWrapper}>
         <Text style={styles.searchIcon}>🔍</Text>
@@ -145,8 +151,7 @@ export default function Hoteis() {
 
       {busca.length > 0 && (
         <Text style={styles.resultCount}>
-          {hoteisFiltrados.length}{' '}
-          {hoteisFiltrados.length === 1 ? 'resultado' : 'resultados'} para "{busca}"
+          {`${hoteisFiltrados.length} ${hoteisFiltrados.length === 1 ? 'resultado' : 'resultados'} para "${busca}"`}
         </Text>
       )}
 
@@ -159,6 +164,12 @@ export default function Hoteis() {
         contentContainerStyle={styles.listContainer}
         keyboardShouldPersistTaps="handled"
       />
+
+      {/* RODAPÉ AZUL */}
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>viaje mais</Text>
+      </View>
+
     </SafeAreaView>
   );
 }
@@ -166,8 +177,20 @@ export default function Hoteis() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#4B4E53',
+    backgroundColor: '#F5F5F5', // Mantive o fundo claro para destacar os cards
+    paddingTop: Platform.OS === 'android' ? 25 : 0 
   },
+
+  // Estilos do Cabeçalho
+  headerTop: { backgroundColor: '#0056D2', padding: 18, alignItems: 'center' },
+  headerTopText: { color: '#fff', fontSize: 20, fontWeight: 'bold' },
+  // Estilos do menu removidos daqui
+
+  // Estilos do Rodapé
+  footer: { backgroundColor: '#0056D2', padding: 15, alignItems: 'center' },
+  footerText: { color: '#fff', fontSize: 14, fontWeight: '500' },
+
+  // Estilos originais da página
   searchWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -200,13 +223,13 @@ const styles = StyleSheet.create({
   },
   resultCount: {
     fontSize: 13,
-    color: '#C8CAD0',
+    color: '#666',
     marginHorizontal: 22,
     marginBottom: 6,
   },
   listContainer: {
     padding: 20,
-    paddingBottom: 90,
+    paddingBottom: 20,
   },
   emptyContainer: {
     alignItems: 'center',
@@ -219,12 +242,12 @@ const styles = StyleSheet.create({
   emptyTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#333',
     marginBottom: 6,
   },
   emptySubtitle: {
     fontSize: 14,
-    color: '#C8CAD0',
+    color: '#666',
   },
   card: {
     backgroundColor: '#FFFFFF',

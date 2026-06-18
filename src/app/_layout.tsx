@@ -1,35 +1,11 @@
-import { Tabs } from 'expo-router';
-import { Platform } from 'react-native';
+import { Stack } from 'expo-router';
 
-export default function TabLayout() {
+export default function RootLayout() {
   return (
-    <Tabs
+    <Stack
       screenOptions={{
-        tabBarPosition: 'top', // Move as abas para cima
         headerShown: false,
-        tabBarStyle: {
-          backgroundColor: '#D3D3D3',
-          height: 60,
-          paddingTop: Platform.OS === 'ios' ? 40 : 0, // Ajuste para o entalhe do iPhone
-        },
-        tabBarActiveTintColor: '#0055aa',
-        tabBarIndicatorStyle: {
-          backgroundColor: '#0055aa',
-          height: 3,
-        },
       }}
-    >
-      {/* 1. Viagens (Página Inicial) */}
-      <Tabs.Screen name="index" options={{ title: 'Viagens' }} />
-
-      {/* 2. Lugares */}
-      <Tabs.Screen name="explore" options={{ title: 'Lugares' }} />
-
-      {/* 3. Hotéis */}
-     {/* 4. Carrinho (Sempre por último) */} <Tabs.Screen name="hotéis " options={{ title: 'hotéis' }} />
-
-      {/* 4. Carrinho (Sempre por último) */}
-      <Tabs.Screen name="carrinho" options={{ title: 'carrinho' }} />
-    </Tabs>
+    />
   );
 }

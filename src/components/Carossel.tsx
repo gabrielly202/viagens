@@ -1,52 +1,56 @@
 import React from 'react';
-import { 
-  StyleSheet, 
-  View, 
-  ImageBackground, 
-  TextInput, 
-  TouchableOpacity, 
-  Text, 
-  KeyboardAvoidingView, 
-  Platform 
+import {
+  StyleSheet,
+  View,
+  ImageBackground,
+  TextInput,
+  TouchableOpacity,
+  Text,
+  KeyboardAvoidingView,
+  Platform
 } from 'react-native';
 
 export default function Carossel() {
   // Imagem de avião da internet para não precisar da pasta assets agora
-  const airplaneImage = { uri: 'https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?q=80&w=2069&auto=format&fit=crop' };
+  const airplaneImage = {
+    uri: 'https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?q=80&w=2069&auto=format&fit=crop'
+  };
 
   return (
-    <ImageBackground 
-      source={airplaneImage} 
+    <ImageBackground
+      source={airplaneImage}
       style={styles.backgroundImage}
       resizeMode="cover"
     >
-      <KeyboardAvoidingView 
+      <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.overlay}
       >
         <View style={styles.loginBox}>
           <Text style={styles.title}>VIAGENS</Text>
           <Text style={styles.subtitle}>Prepare-se para decolar!</Text>
-          
-          <TextInput 
-            placeholder="Seu E-mail" 
-            style={styles.input} 
+
+          <TextInput
+            placeholder="Seu E-mail"
+            style={styles.input}
             placeholderTextColor="#888"
           />
-          
-          <TextInput 
-            placeholder="Sua Senha" 
-            style={styles.input} 
-            secureTextEntry 
+
+          <TextInput
+            placeholder="Sua Senha"
+            style={styles.input}
+            secureTextEntry
             placeholderTextColor="#888"
           />
-          
+
           <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>ENTRAR</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.forgotPass}>
-            <Text style={styles.forgotText}>Ainda não tem conta? Cadastre-se</Text>
+            <Text style={styles.forgotText}>
+              Ainda não tem conta? Cadastre-se
+            </Text>
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
@@ -62,23 +66,22 @@ const styles = StyleSheet.create({
   },
   overlay: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.3)', // Escurece levemente a foto de fundo
+    backgroundColor: 'rgba(0,0,0,0.3)',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  // Substitua o bloco shadow pelo boxShadow (padrão web moderno)
   loginBox: {
     width: '85%',
     padding: 25,
     backgroundColor: 'rgba(255, 255, 255, 0.92)',
     borderRadius: 25,
     alignItems: 'center',
-    boxShadow: "0px 4px 5px rgba(0,0,0,0.3)", // Nova forma de fazer sombra
+    boxShadow: '0px 4px 5px rgba(0,0,0,0.3)',
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#003366', // Azul marinho
+    color: '#003366',
     letterSpacing: 2,
   },
   subtitle: {
@@ -117,5 +120,5 @@ const styles = StyleSheet.create({
   forgotText: {
     color: '#0055aa',
     fontSize: 13,
-  }
+  },
 });

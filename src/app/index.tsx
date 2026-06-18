@@ -1,12 +1,22 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-// Importando o componente da pasta components
-import Carossel from '../components/Carossel'; 
+
+import Header from '../components/Header';
+import Menu from '../components/Menu';
+import Carossel from '../components/Carossel';
+import Footer from '../components/Footer';
 
 export default function Home() {
   return (
     <View style={styles.container}>
-      <Carossel />
+      <Header />
+      <Menu />
+
+      <View style={styles.content}>
+        <Carossel />
+      </View>
+
+      <Footer />
     </View>
   );
 }
@@ -15,6 +25,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+
+  content: {
+    flex: 1,
+  },
 });
-
-
