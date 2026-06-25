@@ -22,6 +22,10 @@ export default function Menu() {
         <Text style={styles.item}>Carrinho</Text>
       </Pressable>
 
+      <Pressable onPress={() => router.push("/minhasviagens")}>
+        <Text style={styles.item}>Minhas viagens</Text>
+      </Pressable>
+
     </View>
   );
 }
